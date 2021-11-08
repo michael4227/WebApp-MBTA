@@ -87,6 +87,7 @@ def find_stop_near(place_name):
     """
     Given a place name or address, return the nearest MBTA stop and whether it is wheelchair accessible.
     """
+    place_name = place_name.replace(' ', '%20')
     tuple_latlng = get_lat_long(place_name)
     lat = tuple_latlng[0]
     lng = tuple_latlng[1]
@@ -105,7 +106,6 @@ def main():
     myapi = f'http://www.mapquestapi.com/geocoding/v1/address?key={MAPQUEST_API_KEY}&location=Washington,DC'
     # get_json(myapi)
     place_name = input('enter place name:>>> ')
-    place_name = place_name.replace(' ', '%20')
     # print(get_lat_long(place_name))
     # lat = 42.35899
     # lon = -71.0586
