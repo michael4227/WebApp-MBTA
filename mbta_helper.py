@@ -93,7 +93,7 @@ def find_stop_near(place_name):
     dic_st_wl = get_nearest_station(lat, lng)
     nearest_MBTA = dic_st_wl[0]
     wheelchair = dic_st_wl[1]
-    return dic_st_wl
+    return f'The nearest MBTA stop is {nearest_MBTA}, and it\'s {wheelchair}'
 
 # print(find_stop_near('MFA,Boston'))
 
@@ -110,7 +110,8 @@ def main():
     # lat = 42.35899
     # lon = -71.0586
     # get_nearest_station(lat, lon))
-    print(find_stop_near(place_name))
+    output = print(find_stop_near(place_name))
+    return output
 
 if __name__ == '__main__':
     main()
