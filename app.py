@@ -17,9 +17,9 @@ def index():
 def MBTA_STATION():
     if request.method == "POST":
         place_name = (request.form['location'])
-        station = find_stop_near(place_name)
+        dic_st_wl = find_stop_near(place_name)
         
-        if station:
+        if dic_st_wl:
             return render_template(
                 'mbta_station.html',
                 output = station
