@@ -110,7 +110,7 @@ def main():
     # lat = 42.35899
     # lon = -71.0586
     # get_nearest_station(lat, lon))
-    output = find_stop_near(place_name)
+    output = print(find_stop_near(place_name))
     return output
 
 if __name__ == '__main__':
