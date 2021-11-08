@@ -2,15 +2,18 @@
 Simple "Hello, World" application using Flask
 """
 
+from logging import error
 from flask import Flask, render_template, request
-
+from flask.scaffold import _matching_loader_thinks_module_is_package
 from mbta_helper import find_stop_near, get_nearest_station, main
-
 
 app = Flask(__name__)
 
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-@app.route('/index/', methods=["GET", "POST"])
+@app.route('/location/', methods=['GET','POST'])
 def MBTA_STATION():
     if request.method == "POST":
         place_name = (request.form['location'])
@@ -19,9 +22,11 @@ def MBTA_STATION():
         if station:
             return render_template(
                 'mbta_station.html',
+                output = station
             )
         else:
-            return render_template("error.html")
+            return render_template('index.html', error=True)
+    return render_template('index.html', error=None)
 
 
 if __name__ == '__main__':
