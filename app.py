@@ -20,14 +20,10 @@ def MBTA_STATION():
         station = find_stop_near(place_name)
         
         if station:
-            return render_template(
-                'mbta_station.html',
-                output = station
-            )
+            return render_template('mbta_station.html')
         else:
-            return render_template('index.html', error=True)
-    return render_template('index.html', error=None)
-
+            return render_template('mbta_station.html', error=True)
+    return render_template('mbta_station.html', error=None)
 
 if __name__ == '__main__':
     app.run(debug=True)
