@@ -20,6 +20,8 @@ def MBTA_STATION():
             return render_template(
                 'mbta_station.html',
             )
+        else:
+            return render_template("error.html")
 
 
 if __name__ == '__main__':
