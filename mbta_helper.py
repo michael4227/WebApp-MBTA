@@ -1,5 +1,5 @@
 # Useful URLs (you need to add the appropriate parameters for your requests)
-from pprint import pprint
+import string
 
 
 MAPQUEST_BASE_URL = "http://www.mapquestapi.com/geocoding/v1/address"
@@ -8,7 +8,6 @@ MBTA_BASE_URL = "https://api-v3.mbta.com/stops"
 # Your API KEYS (you need to use your own keys - very long random characters)
 MAPQUEST_API_KEY = "S702YQUN9ATGvZu3GmhQAcnoU9YH45AG"
 MBTA_API_KEY = "5d64f7ac5dda4699ad94b4d17d14f22f"
-#michael
 
 
 
@@ -94,7 +93,7 @@ def find_stop_near(place_name):
     dic_st_wl = get_nearest_station(lat, lng)
     nearest_MBTA = dic_st_wl[0]
     wheelchair = dic_st_wl[1]
-    print(f'The nearest MBTA stop is {nearest_MBTA}, and it\'s {wheelchair}')
+    return f'The nearest MBTA stop is {nearest_MBTA}, and it\'s {wheelchair}'
 
 # print(find_stop_near('MFA,Boston'))
 
@@ -104,13 +103,14 @@ def main():
     You can test all the functions here
     """
     myapi = f'http://www.mapquestapi.com/geocoding/v1/address?key={MAPQUEST_API_KEY}&location=Washington,DC'
-    get_json(myapi)
-    place_name = 'MFA,Boston'
-    get_lat_long(place_name)
-    lat = 42.35899
-    lon = -71.05863
-    print(get_nearest_station(lat, lon))
-    find_stop_near('MFA,Boston')
+    # get_json(myapi)
+    place_name = input('enter place name:>>> ')
+    place_name = place_name.replace(' ', '%20')
+    # print(get_lat_long(place_name))
+    # lat = 42.35899
+    # lon = -71.0586
+    # get_nearest_station(lat, lon))
+    print(find_stop_near(place_name))
 
 if __name__ == '__main__':
     main()
