@@ -13,12 +13,12 @@ app = Flask(__name__)
 def MBTA_STATION():
     if request.method == "POST":
         place_name = (request.form['location'])
-        station = find_stop_near(place_name)
-        if station:
+        try:
+            station = find_stop_near(place_name)
             return render_template('mbta_station.html',
             location = place_name,
             output = station)
-        else:
+        except:
             return render_template('error.html',error=True)
     return render_template('index.html', error=None)
 
